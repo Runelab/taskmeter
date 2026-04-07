@@ -1,14 +1,323 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taskmeterator</title>
-    <script type="module" crossorigin src="/assets/index-D7Irf9sd.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-D3THSd5n.css">
-  </head>
-  <body>
-    <div id="app"></div>
-  </body>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Taskmeter – ICT & IR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #212121;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #BB35FE, #00A5F7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2rem;
+    }
+    h3 {
+      margin-top: 2rem;
+      font-weight: 700;
+      color: #BB35FE;
+    }
+    .row { margin-bottom: 1.5rem; }
+    label { display: block; font-weight: 500; margin-bottom: 0.4rem; }
+    p { display: block; font-weight: 300; font-size: 0.8rem; color: #E5E5E5}
+    input[type=range], input[type=radio] { margin-right: 0.5rem; }
+    input[type=range] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #303030;
+      border-radius: 5px;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #BB35FE;
+      cursor: pointer;
+    }
+    input[type=radio]:checked { accent-color: #BB35FE; }
+    button {
+      background: linear-gradient(135deg, #BB35FE, #00A5F7);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .summary {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #2a2a2a;
+      border-radius: 8px;
+    }
+    .value-big {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-left: 0.5rem;
+    }
+    .facile { background: #2e7d32; }
+    .medio { background: #f9a825; }
+    .difficile { background: #ef6c00; }
+    .critico { background: #c62828; }
+    .basso { background: #2e7d32; }
+    .alto { background: #ef6c00; }
+  </style>
+</head>
+<body>
+  <h2>Taskmeter – ICT & IR</h2>
+
+  <h3>Indice Complessità Tecnica (ICT)</h3>
+
+  <div class="row">
+    <label>Dimensioni progetto</label>
+    <input type="radio" name="dimensioni" value="1" checked> S
+    <input type="radio" name="dimensioni" value="2"> M
+    <input type="radio" name="dimensioni" value="3"> L
+    <input type="radio" name="dimensioni" value="4"> XL
+  </div>
+
+  <div class="row">
+    <label>Esperienza e Know how</label>
+    <input type="radio" name="knowhow" value="0" checked> Case studies simili
+    <input type="radio" name="knowhow" value="1"> Know-how nel settore
+    <input type="radio" name="knowhow" value="2"> Nessuna
+  </div>
+
+  <div class="row">
+    <label>Tipologia di commessa</label>
+    <input type="radio" name="commessa" value="0" checked> Esigenza specifica
+    <input type="radio" name="commessa" value="1"> Progetto
+    <input type="radio" name="commessa" value="1"> Remake
+    <input type="radio" name="commessa" value="2"> Gestionale
+  </div>
+
+  <div class="row">
+    <label>Feature critiche (0–5)</label>
+    <p>Calendari, Prenotazioni, gestione delle timezone, Stripe Connect, workflow approvativi a stati, logiche condizionali, configurazione dinamica, notifiche dinamiche, calcoli di scarti (monete, investimenti, giacenze di magazzino, sconti multipli), aggiornamenti in tempo reale, alta intensità di dati, grafici e dashboard (pdata visualization), reportistica.</p>
+    <input type="range" id="feature" min="0" max="5" value="0">
+  </div>
+
+  <div class="row">
+    <label>Integrazioni (0–5)</label>
+    <input type="range" id="integrazioni" min="0" max="5" value="0">
+  </div>
+
+  <h3>Indice di Rischio (IR)</h3>
+
+  <div class="row">
+    <label>Tempi richiesti</label>
+    <input type="radio" name="tempi" value="1" checked> Lunghi
+    <input type="radio" name="tempi" value="2"> Medi
+    <input type="radio" name="tempi" value="3"> Stretti
+  </div>
+
+  <div class="row">
+    <label>Budget disponibile</label>
+    <input type="radio" name="budget" value="1" checked> Alto
+    <input type="radio" name="budget" value="2"> Giusto
+    <input type="radio" name="budget" value="3"> Basso
+  </div>
+
+  <div class="row">
+    <label>Digitalizzazione cliente</label>
+    <input type="radio" name="digital" value="1" checked> Alta
+    <input type="radio" name="digital" value="2"> Media
+    <input type="radio" name="digital" value="3"> Bassa
+  </div>
+
+  <div class="row">
+    <label>Apertura cliente</label>
+    <input type="radio" name="apertura" value="1" checked> Collaborativo
+    <input type="radio" name="apertura" value="2"> Neutro
+    <input type="radio" name="apertura" value="3"> Resistente
+  </div>
+
+  <div class="row">
+    <label>Stabilità cliente</label>
+    <input type="radio" name="stabilita" value="1" checked> Stabile
+    <input type="radio" name="stabilita" value="2"> Incerta
+    <input type="radio" name="stabilita" value="3"> Instabile
+  </div>
+
+  <div class="row">
+    <label>Complessità di dominio</label>
+    <input type="radio" name="dominio" value="1" checked> Bassa
+    <input type="radio" name="dominio" value="2"> Media
+    <input type="radio" name="dominio" value="3"> Alta
+  </div>
+
+  <button onclick="calcola()">Calcola</button>
+
+  <div class="summary" id="output"></div>
+
+  <script>
+    const FIELD_NAMES = [
+      'dimensioni',
+      'knowhow',
+      'commessa',
+      'tempi',
+      'budget',
+      'digital',
+      'apertura',
+      'stabilita',
+      'dominio'
+    ];
+
+    const RANGE_IDS = ['feature', 'integrazioni'];
+
+    function getVal(name) {
+      return parseInt(document.querySelector(`input[name="${name}"]:checked`)?.value || 0, 10);
+    }
+
+    function setRadioValue(name, value) {
+      const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
+      if (radio) radio.checked = true;
+    }
+
+    function updateQueryString() {
+      const params = new URLSearchParams();
+
+      FIELD_NAMES.forEach(name => {
+        const value = document.querySelector(`input[name="${name}"]:checked`)?.value;
+        if (value !== undefined) params.set(name, value);
+      });
+
+      RANGE_IDS.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) params.set(id, el.value);
+      });
+
+      const newUrl = `${window.location.pathname}?${params.toString()}`;
+      history.replaceState({}, '', newUrl);
+    }
+
+    function restoreFromQueryString() {
+      const params = new URLSearchParams(window.location.search);
+
+      FIELD_NAMES.forEach(name => {
+        const value = params.get(name);
+        if (value !== null) setRadioValue(name, value);
+      });
+
+      RANGE_IDS.forEach(id => {
+        const value = params.get(id);
+        const el = document.getElementById(id);
+        if (value !== null && el) el.value = value;
+      });
+    }
+
+    function bindSyncEvents() {
+      document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('input', () => {
+          updateQueryString();
+          calcola();
+        });
+
+        input.addEventListener('change', () => {
+          updateQueryString();
+          calcola();
+        });
+      });
+    }
+
+    function calcola() {
+      const dim = getVal('dimensioni');
+      const know = getVal('knowhow');
+      const commessa = getVal('commessa');
+      const feature = parseInt(document.getElementById('feature').value, 10);
+      const integ = parseInt(document.getElementById('integrazioni').value, 10);
+
+      let pesoDim = dim === 2 ? 0.65 : dim === 3 ? 0.75 : dim === 4 ? 0.85 : 0.5;
+
+      let ictRaw = dim * pesoDim + know * 0.3 + commessa * 1 + feature * 0.8 + integ * 0.8;
+      let ICT = ((ictRaw - 0.5) / (14 - 0.5)) * 10;
+
+      if (ICT < 0) ICT = 0;
+      if (ICT > 10) ICT = 10;
+
+      ICT = Math.round(ICT * 10) / 10;
+
+      let grado = '';
+      let classe = '';
+      if (ICT <= 4) { grado = 'Facile'; classe = 'facile'; }
+      else if (ICT <= 7) { grado = 'Medio'; classe = 'medio'; }
+      else if (ICT <= 9) { grado = 'Difficile'; classe = 'difficile'; }
+      else { grado = 'Critico'; classe = 'critico'; }
+
+      let rischioTecnico = 0;
+      if (ICT > 5 && ICT <= 7) rischioTecnico = 1;
+      else if (ICT > 7 && ICT <= 8.5) rischioTecnico = 2;
+      else if (ICT > 8.5) rischioTecnico = 3;
+
+      const tempi = getVal('tempi');
+      const budget = getVal('budget');
+      const digital = getVal('digital');
+      const apertura = getVal('apertura');
+      const stabilita = getVal('stabilita');
+      const dominio = getVal('dominio');
+
+      let rischioCliente = (tempi * 2) + (budget * 2) + digital + apertura + stabilita + (dominio * 1.5);
+      let baseClientNorm = ((rischioCliente - 8.5) / (25.5 - 8.5)) * 10;
+      let IR = baseClientNorm * (1 + rischioTecnico * 0.05);
+
+      if (IR < 0) IR = 0;
+      if (IR > 10) IR = 10;
+
+      IR = Math.round(IR * 10) / 10;
+
+      let gradoIR = '';
+      let classeIR = '';
+      if (IR <= 3) { gradoIR = 'Basso'; classeIR = 'basso'; }
+      else if (IR <= 5) { gradoIR = 'Medio'; classeIR = 'medio'; }
+      else if (IR <= 7) { gradoIR = 'Alto'; classeIR = 'alto'; }
+      else if (IR <= 8.5) { gradoIR = 'Pericoloso'; classeIR = 'difficile'; }
+      else { gradoIR = 'Critico'; classeIR = 'critico'; }
+
+      let analisi = '';
+      if (IR <= 3) analisi = 'Analisi Light';
+      else if (IR <= 5) analisi = 'Analisi completa';
+      else if (IR <= 7) analisi = 'Analisi approfondita e restrittiva';
+      else if (IR <= 8.5) analisi = 'Analisi approfondita e restrittiva con tecnici esperti';
+      else analisi = 'Impostare un iter collaborativo ben definito con il cliente';
+
+      document.getElementById('output').innerHTML = `
+        <div class="value-big">ICT: ${ICT}/10 <span class="badge ${classe}">${grado}</span></div>
+        <br>
+        <div class="value-big">IR: ${IR}/10 <span class="badge ${classeIR}">${gradoIR}</span></div>
+        <br><br>
+        <div class="badge ${classeIR}" style="font-size:0.9rem; padding:0.4rem 0.8rem;">
+          ${analisi}
+        </div>
+      `;
+    }
+
+    restoreFromQueryString();
+    bindSyncEvents();
+    updateQueryString();
+    calcola();
+  </script>
+</body>
 </html>
